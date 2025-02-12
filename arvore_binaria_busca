@@ -153,17 +153,27 @@ PONT removerTodasOcorrencias(PONT raiz, int valor) {
 //------------------------------------------------------------------------------
 // 7) Exibir InOrder
 void exibirInOrder(PONT raiz) {
-    // COMPLETAR
+    if (raiz == NULL) {
+        return;
+    }
+    exibirInOrder(raiz->esq);
+    for (int i = 0; i < raiz->contador; i++) {
+        printf("%d ", raiz->chave);
+    }
+    exibirInOrder(raiz->dir);
     // Percurso InOrder: esq -> (raiz->chave impresso contador vezes) -> dir
 }
 
 //------------------------------------------------------------------------------
 // 8) Contar nós distintos
 int contarNos(PONT raiz) {
-    // COMPLETAR
+    if (raiz == NULL) {
+        return 0;
+    }
+    return 1 + contarNos(raiz->esq) + contarNos(raiz->dir);
     // Se raiz==NULL => 0
     // Senao => 1 + contarNos(esq) + contarNos(dir)
-    return 0; // provisório
+    // return 0; // provisório
 }
 
 //------------------------------------------------------------------------------
