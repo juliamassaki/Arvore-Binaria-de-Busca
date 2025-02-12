@@ -117,7 +117,33 @@ PONT removerUmaOcorrencia(PONT raiz, int valor) {
 //------------------------------------------------------------------------------
 // 6) Remover TODAS ocorrências
 PONT removerTodasOcorrencias(PONT raiz, int valor) {
-    // COMPLETAR
+    if (raiz == NULL) {
+        return raiz;
+    }
+    if (valor < raiz->chave) {
+        raiz->esq = removerTodasOcorrencias(raiz->esq, valor);
+    } else if (valor > raiz->chave) {
+        raiz->dir = removerTodasOcorrencias(raiz->dir, valor);
+    } else {
+        // Remoção tradicional da BST
+        if (raiz->esq == NULL) {
+            PONT temp = raiz->dir;
+            free(raiz);
+            return temp;
+        } else if (raiz->dir == NULL) {
+            PONT temp = raiz->esq;
+            free(raiz);
+            return temp;
+        } else {
+            PONT temp = raiz->dir;
+            while (temp && temp->esq != NULL) {
+                temp = temp->esq;
+            }
+            raiz->chave = temp->chave;
+            raiz->contador = temp->contador;
+            raiz->dir = removerTodasOcorrencias(raiz->dir, temp->chave);
+        }
+    }
     // 1) Buscar nó do valor
     //    - se não achar, não faz nada
     // 2) se achar => remove nó da BST (casos 0,1,2 filhos)
