@@ -179,9 +179,12 @@ int contarNos(PONT raiz) {
 //------------------------------------------------------------------------------
 // 9) Contar total de elementos (somando contadores)
 int contarTotalElementos(PONT raiz) {
-    // COMPLETAR
+    if (raiz == NULL) {
+        return 0;
+    }
+    return raiz-> contador + contarTotalElementos(raiz->esq) + contarTotalElementos(raiz->dir);
     // soma = raiz->contador + subárvores
-    return 0; // provisório
+    // return 0; // provisório
 }
 
 //------------------------------------------------------------------------------
