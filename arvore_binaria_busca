@@ -190,7 +190,15 @@ int contarTotalElementos(PONT raiz) {
 //------------------------------------------------------------------------------
 // 10) k-ésimo menor
 int kEsimoMenor(PONT raiz, int k) {
-    // COMPLETAR
+    if (raiz == NULL) return -1;
+    int quantidade_esquerda = contarTotalElementos(raiz-> esq);
+    if (k <= quantidade_esquerda) {
+        return kEsimoMenor(raiz-> esq, k);
+    } else if (k <= quantidade_esquerda + raiz-> contador) {
+        return raiz-> chave;
+    } else {
+        return kEsimoMenor(raiz-> dir, k - quantidade_esquerda - raiz-> contador);
+    }
     // Deve considerar o contador de cada nó
     // Retorne -1 se não existir
     return -1; // provisório
