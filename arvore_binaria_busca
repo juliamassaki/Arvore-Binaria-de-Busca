@@ -225,8 +225,14 @@ void imprimirIntervalo(PONT raiz, int min, int max) {
 //------------------------------------------------------------------------------
 
 PONT lowestCommonAncestor(PONT raiz, int val1, int val2) {
-    // COMPLETAR
-    return NULL;
+    if (raiz == NULL) return 0;
+    if (val1 < raiz-> chave && val2 < raiz-> chave) {
+        return lowestCommonAncestor(raiz-> esq, val1, val2);
+    } else if (val1 > raiz->chave && val2 > raiz->chave) {
+        return lowestCommonAncestor(raiz->dir, val1, val2);
+    }
+    return raiz;
+    //return NULL;
 }
 
 
