@@ -220,7 +220,11 @@ void imprimirIntervalo(PONT raiz, int min, int max) {
 //------------------------------------------------------------------------------
 
 PONT lowestCommonAncestor(PONT raiz, int val1, int val2) {
-    if (raiz == NULL) return 0;
+    if (raiz == NULL) return NULL;
+    PONT node1 = buscar(raiz, val1);
+    PONT node2 = buscar(raiz, val2);
+    if (node1 == NULL || node2 == NULL) return NULL;   //para verificar se ambos os valores estão na árvore
+
     if (val1 < raiz-> chave && val2 < raiz-> chave) {
         return lowestCommonAncestor(raiz-> esq, val1, val2);
     } else if (val1 > raiz->chave && val2 > raiz->chave) {
