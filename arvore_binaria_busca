@@ -403,7 +403,7 @@ int main() {
         printf("LCA(16,18) => chave=%d (esperado=15)\n", nLCA->chave);
     }
 
-    nLCA = lowestCommonAncestor(raiz, 5, 18);                            // chave 15 encontrada, raiz mudou de 5 para 15
+    nLCA = lowestCommonAncestor(raiz, 5, 18);                            // chave 15 encontrada, raiz mudou de 10 para 15
     if(nLCA) {
         printf("LCA(5,18) => chave=%d (esperado=5)\n", nLCA->chave);
     }
